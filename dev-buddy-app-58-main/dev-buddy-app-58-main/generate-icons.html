@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate PWA Icons</title>
+</head>
+<body>
+    <h1>PWA Icon Generator</h1>
+    <p>This page will generate the required PWA icons.</p>
+    <canvas id="canvas192" width="192" height="192" style="display: none;"></canvas>
+    <canvas id="canvas512" width="512" height="512" style="display: none;"></canvas>
+    <div>
+        <h2>192x192 Icon:</h2>
+        <img id="img192" style="border: 1px solid #ccc;">
+        <br>
+        <a id="download192" download="icon-192.png">Download 192x192</a>
+    </div>
+    <div>
+        <h2>512x512 Icon:</h2>
+        <img id="img512" style="border: 1px solid #ccc;">
+        <br>
+        <a id="download512" download="icon-512.png">Download 512x512</a>
+    </div>
+
+    <script>
+        function drawIcon(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            const scale = size / 512;
+
+            // Background
+            ctx.fillStyle = '#8B5FBF';
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, size * 96 / 512);
+            ctx.fill();
+
+            // Center everything
+            ctx.translate(size * 128 / 512, size * 128 / 512);
+
+            // Draw smile face circle
+            ctx.strokeStyle = '#F5F7FA';
+            ctx.lineWidth = 12 * scale;
+            ctx.beginPath();
+            ctx.arc(128 * scale, 128 * scale, 120 * scale, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Left eye
+            ctx.fillStyle = '#F5F7FA';
+            ctx.beginPath();
+            ctx.arc(90 * scale, 110 * scale, 16 * scale, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Right eye
+            ctx.beginPath();
+            ctx.arc(166 * scale, 110 * scale, 16 * scale, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Smile
+            ctx.strokeStyle = '#F5F7FA';
+            ctx.lineWidth = 12 * scale;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.arc(128 * scale, 128 * scale, 55 * scale, 0.3, Math.PI - 0.3);
+            ctx.stroke();
+
+            // Heart accent
+            ctx.fillStyle = '#FF6B9D';
+            ctx.globalAlpha = 0.9;
+            ctx.beginPath();
+            ctx.moveTo(235 * scale, 40 * scale);
+            ctx.bezierCurveTo(235 * scale, 30 * scale, 245 * scale, 25 * scale, 252.5 * scale, 30 * scale);
+            ctx.bezierCurveTo(260 * scale, 25 * scale, 270 * scale, 30 * scale, 270 * scale, 40 * scale);
+            ctx.bezierCurveTo(270 * scale, 60 * scale, 252.5 * scale, 75 * scale, 252.5 * scale, 75 * scale);
+            ctx.bezierCurveTo(252.5 * scale, 75 * scale, 235 * scale, 60 * scale, 235 * scale, 40 * scale);
+            ctx.fill();
+        }
+
+        // Generate 192x192 icon
+        const canvas192 = document.getElementById('canvas192');
+        drawIcon(canvas192);
+        const dataUrl192 = canvas192.toDataURL('image/png');
+        document.getElementById('img192').src = dataUrl192;
+        document.getElementById('download192').href = dataUrl192;
+
+        // Generate 512x512 icon
+        const canvas512 = document.getElementById('canvas512');
+        drawIcon(canvas512);
+        const dataUrl512 = canvas512.toDataURL('image/png');
+        document.getElementById('img512').src = dataUrl512;
+        document.getElementById('download512').href = dataUrl512;
+
+        console.log('Icons generated! Right-click and save the images, or use the download links.');
+    </script>
+</body>
+</html>

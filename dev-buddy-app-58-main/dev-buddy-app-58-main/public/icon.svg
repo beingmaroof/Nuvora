@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#8B5FBF"/>
+  <g transform="translate(128, 128)">
+    <!-- Smile Face -->
+    <circle cx="128" cy="128" r="120" fill="none" stroke="#F5F7FA" stroke-width="12"/>
+    <!-- Left eye -->
+    <circle cx="90" cy="110" r="16" fill="#F5F7FA"/>
+    <!-- Right eye -->
+    <circle cx="166" cy="110" r="16" fill="#F5F7FA"/>
+    <!-- Smile -->
+    <path d="M 80 150 Q 128 190 176 150" fill="none" stroke="#F5F7FA" stroke-width="12" stroke-linecap="round"/>
+    <!-- Heart accent -->
+    <path d="M 200 60 C 200 40 220 30 235 40 C 250 30 270 40 270 60 C 270 85 235 110 235 110 C 235 110 200 85 200 60 Z" fill="#FF6B9D" opacity="0.9"/>
+  </g>
+</svg>
